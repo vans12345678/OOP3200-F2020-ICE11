@@ -1,12 +1,10 @@
-package ca.durhamcollege;
-
-import java.util.Vector;
+package ca.durhamcollege.utility;
 
 public class Vector2D
 {
     // PRIVATE INSTANCE VARIABLES
-    private float x;
-    private float y;
+    protected float x;
+    protected float y;
 
     // PUBLIC PROPERTIES (MUTATORS & ACCESSORS)
     public float getX()
@@ -194,5 +192,20 @@ public class Vector2D
         final var delta_y = (double)(b.getY()) - (double)(a.getY());
 
         return (float)(Math.sqrt(delta_x * delta_x + delta_y * delta_y));
+    }
+    public static final Vector2D random(final Vector2D start, final Vector2D end)
+    {
+        // generate random Y value
+        float minX = Math.min(start.getX(), end.getX());
+        float maxX = Math.max(start.getX(), end.getX());
+        float randomX = Mathf.RandomRange(minX,maxX);
+
+        // generate random X value
+        float minY = Math.min(start.getY(), end.getY());
+        float maxY = Math.max(start.getY(), end.getY());
+        float randomY = Mathf.RandomRange(minY,maxY);
+
+
+        return new Vector2D(randomX, randomY);
     }
 }
